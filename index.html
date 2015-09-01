@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        /* 初始化 */
+        html, body {
+        }
+
+        html {
+            font-size: 100px;
+        }
+
+        body {
+            font-size: 14px;
+        }
+
+        /* 类库 */
+        .box-flex {
+            /* webkit, moz历史版本兼容 */
+            display: -webkit-box;
+            display: -moz-box;
+            /* IE私有写法 */
+            display: -ms-flexbox;
+            /* 标准写法 */
+            display: -webkit-flex;
+            display: flex;
+        }
+
+        .box-flex > .box-flex-item {
+            /* webkit, moz历史版本兼容 */
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            /* IE私有写法 */
+            -ms-flex: 1;
+            /* 标准写法 */
+            -webkit-flex: 1;
+            flex: 1;
+        }
+
+        @-webkit-keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(1080deg);
+            }
+        }
+
+        @-moz-keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(1080deg);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(1080deg);
+            }
+        }
+
+        .rotate-taichi {
+            -webkit-animation: rotate .1s linear infinite;
+            -moz-animation: rotate .1s linear infinite;
+            animation: rotate .1s linear infinite;
+        }
+
+        /* 太极 */
+        .taichi {
+            position: relative;
+            width: 200px;
+            margin-top: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .taichi:before,
+        .taichi:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: .5rem;
+            height: .5rem;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .taichi:before {
+            margin-left: -.25rem;
+            left: 50%;
+            bottom: 0;
+            background-color: #66ccff;
+        }
+
+        .taichi:after {
+            margin-right: -.25rem;
+            right: 50%;
+            top: 0;
+            background-color: #e60000;
+        }
+
+        .taichi > .luotianyi,
+        .taichi > .yuezhengling {
+            position: relative;
+            width: 1rem;
+            height: 1rem;
+            overflow: hidden;
+        }
+
+        .taichi > .luotianyi:before,
+        .taichi > .yuezhengling:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .luotianyi:before {
+            right: -.5rem;
+            background-color: #66ccff;
+            border-radius: 50% 0 0 50%;
+        }
+
+        .yuezhengling:after {
+            left: -.5rem;
+            background-color: #e60000;
+            border-radius: 0 50% 50% 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box-flex taichi">
+    <div class="box-flex-item luotianyi"></div>
+    <div class="box-flex-item yuezhengling"></div>
+</div>
+
+<script src="http://ajax.useso.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+    $(function () {
+        $('.taichi').on('click', function () {
+            var $this = $(this), animName = 'rotate-taichi';
+            $this.hasClass(animName) ? $this.removeClass(animName) : $this.addClass(animName) ;
+        })
+    })
+</script>
+
+</body>
+</html>
